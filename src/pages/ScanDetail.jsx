@@ -8,11 +8,11 @@ function ScanDetail() {
   const { id } = useParams();
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 transition-colors duration-300">
 
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-semibold">
+        <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
           Scan Detail - {id}
         </h1>
       </div>

@@ -1,14 +1,74 @@
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
+import { AuthContext } from "../context/AuthContext";
 import Button from "../components/ui/Button";
 import Input from "../components/ui/Input";
+
 function Login() {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const [isLoginMode, setIsLoginMode] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleCreateAccount = () => {
+    setError("");
+    if (!firstName || !lastName || !email || !password) {
+      setError("Please fill all fields");
+      return;
+    }
+
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedPassword = password.trim();
+
+    // Store account in localStorage
+    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    const accountExists = accounts.some((acc) => acc.email === trimmedEmail);
+
+    if (accountExists) {
+      setError("Account already exists with this email");
+      return;
+    }
+
+    accounts.push({ firstName, lastName, email: trimmedEmail, password: trimmedPassword });
+    localStorage.setItem("accounts", JSON.stringify(accounts));
+    console.log("Account created:", { firstName, lastName, email: trimmedEmail });
+
+    // Login and navigate
+    login({ firstName, lastName, email: trimmedEmail });
+    navigate("/dashboard");
+  };
+
+  const handleLogin = () => {
+    setError("");
+    if (!email || !password) {
+      setError("Please fill all fields");
+      return;
+    }
+
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedPassword = password.trim();
+
+    const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+    console.log("Stored accounts:", accounts);
+    console.log("Trying to login with:", { email: trimmedEmail, password: trimmedPassword });
+
+    const account = accounts.find((acc) => acc.email === trimmedEmail && acc.password === trimmedPassword);
+
+    if (!account) {
+      setError("Invalid email or password");
+      return;
+    }
+
+    login({ firstName: account.firstName, lastName: account.lastName, email: account.email });
+    navigate("/dashboard");
+  };
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row transition-colors duration-300">
@@ -86,26 +146,42 @@ function Login() {
 
               {/* Title */}
               <div className="text-center space-y-2 mb-6">
-                <h2 className="text-3xl font-semibold">Sign up</h2>
+                <h2 className="text-3xl font-semibold">
+                  {isLoginMode ? "Log in" : "Sign up"}
+                </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Already have an account?
-                  <span className="text-teal-500 cursor-pointer ml-1">
-                    Log in
+                  {isLoginMode ? "Don't have an account?" : "Already have an account?"}
+                  <span 
+                    className="text-teal-500 cursor-pointer ml-1 hover:underline"
+                    onClick={() => {
+                      setIsLoginMode(!isLoginMode);
+                      setError("");
+                      setFirstName("");
+                      setLastName("");
+                      setEmail("");
+                      setPassword("");
+                    }}
+                  >
+                    {isLoginMode ? "Sign up" : "Log in"}
                   </span>
                 </p>
               </div>
 
-              <Input
-                label="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+              {!isLoginMode && (
+                <>
+                  <Input
+                    label="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
 
-              <Input
-                label="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
+                  <Input
+                    label="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </>
+              )}
 
               <Input
                 label="Email Address"
@@ -121,29 +197,41 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
 
-              <label className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400">
-                <input
-                  type="checkbox"
-                  className="mt-1 accent-teal-500"
-                />
-                <span>
-                  I agree to the Terms & Conditions and Privacy Policy
-                </span>
-              </label>
+              {error && (
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
 
-              <Button variant="primary" className="w-full">
-                Create account
+              {!isLoginMode && (
+                <label className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400">
+                  <input
+                    type="checkbox"
+                    className="mt-1 accent-teal-500"
+                  />
+                  <span>
+                    I agree to the Terms & Conditions and Privacy Policy
+                  </span>
+                </label>
+              )}
+
+              <Button 
+                variant="primary" 
+                className="w-full"
+                onClick={isLoginMode ? handleLogin : handleCreateAccount}
+              >
+                {isLoginMode ? "Log in" : "Create account"}
               </Button>
 
               {/* Social Buttons */}
               <div className="flex gap-3 pt-4">
-                <button className="flex-1 bg-black text-white py-2 rounded-xl text-sm font-medium">
+                <button className="flex-1 bg-black text-white py-2 rounded-xl text-sm font-medium hover:bg-gray-900">
                   Apple
                 </button>
-                <button className="flex-1 bg-white border border-gray-300 py-2 rounded-xl text-sm font-medium">
+                <button className="flex-1 bg-white border border-gray-300 py-2 rounded-xl text-sm font-medium hover:bg-gray-50">
                   Google
                 </button>
-                <button className="flex-1 bg-blue-600 text-white py-2 rounded-xl text-sm font-medium">
+                <button className="flex-1 bg-blue-600 text-white py-2 rounded-xl text-sm font-medium hover:bg-blue-700">
                   Meta
                 </button>
               </div>

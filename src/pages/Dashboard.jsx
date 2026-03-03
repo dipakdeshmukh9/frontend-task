@@ -5,9 +5,9 @@ import Button from "../components/ui/Button";
 
 function Dashboard() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 transition-colors duration-300">
 
-      <h1 className="text-2xl font-semibold">
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
         Dashboard
       </h1>
 
