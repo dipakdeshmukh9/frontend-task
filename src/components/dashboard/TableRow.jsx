@@ -8,13 +8,13 @@ function TableRow({ scan }) {
   return (
     <tr
       onClick={() => navigate(`/scan/${scan.id}`)}
-      className="border-b border-gray-200 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition"
+      className="border-b border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800/50 cursor-pointer transition"
     >
-      <td className="px-6 py-4 font-medium">
+      <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">
         {scan.name}
       </td>
 
-      <td className="px-6 py-4">
+      <td className="px-6 py-4 text-gray-700 dark:text-gray-300">
         {scan.type}
       </td>
 
@@ -23,31 +23,31 @@ function TableRow({ scan }) {
       </td>
 
       <td className="px-6 py-4 w-40">
-  <ProgressBar value={scan.progress} />
-</td>
+        <ProgressBar value={scan.progress} />
+      </td>
 
       <td className="px-6 py-4">
-  <div className="flex gap-2 flex-wrap">
-    <SeverityBadge
-      count={scan.vulnerabilities.critical}
-      type="critical"
-    />
-    <SeverityBadge
-      count={scan.vulnerabilities.high}
-      type="high"
-    />
-    <SeverityBadge
-      count={scan.vulnerabilities.medium}
-      type="medium"
-    />
-    <SeverityBadge
-      count={scan.vulnerabilities.low}
-      type="low"
-    />
-  </div>
-</td>
+        <div className="flex gap-2 flex-wrap">
+          <SeverityBadge
+            count={scan.vulnerabilities.critical}
+            type="critical"
+          />
+          <SeverityBadge
+            count={scan.vulnerabilities.high}
+            type="high"
+          />
+          <SeverityBadge
+            count={scan.vulnerabilities.medium}
+            type="medium"
+          />
+          <SeverityBadge
+            count={scan.vulnerabilities.low}
+            type="low"
+          />
+        </div>
+      </td>
 
-      <td className="px-6 py-4">
+      <td className="px-6 py-4 text-gray-600 dark:text-gray-400">
         {scan.lastScan}
       </td>
     </tr>
