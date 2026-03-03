@@ -12,9 +12,9 @@ function Input({ label, type = "text", placeholder, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="px-3 py-2 rounded-lg border border-gray-300 
-                   focus:outline-none focus:ring-2 focus:ring-teal-500
-                   dark:bg-[#1A1A1A] dark:border-gray-700 dark:text-white"
+        className="px-3 py-2 rounded-lg border border-gray-300 bg-white
+                   focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent
+                   dark:bg-[#1A1A1A] dark:border-gray-700 dark:text-white dark:placeholder-gray-500 dark:focus:ring-cyan-500"
       />
     </div>
   );

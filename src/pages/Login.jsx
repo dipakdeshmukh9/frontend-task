@@ -71,7 +71,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row transition-colors duration-300">
+    <div className="min-h-screen flex flex-col md:flex-row transition-colors duration-300 bg-white dark:bg-[#0F0F0F]">
 
       {/* ================= LEFT HERO (Desktop Only) ================= */}
       <div className="hidden md:flex md:w-1/2 relative overflow-hidden bg-[#0F0F0F] text-white px-16 py-20 flex-col justify-center">
@@ -119,16 +119,27 @@ function Login() {
       </div>
 
       {/* ================= RIGHT SIDE (FORM SECTION) ================= */}
-      <div className="md:w-1/2 bg-gray-50 dark:bg-[#0F0F0F] px-6 py-10 md:px-16 md:py-20 flex flex-col">
+      <div className="w-full md:w-1/2 bg-white dark:bg-[#0F0F0F] px-4 md:px-16 py-8 md:py-20 flex flex-col transition-colors duration-300">
 
-        {/* Theme Toggle */}
-        <div className="flex justify-between items-center mb-8">
-          <div className="md:hidden flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white text-sm font-bold">
+        {/* Mobile Header - Logo + Theme Toggle */}
+        <div className="md:hidden flex justify-between items-center mb-10 md:mb-12">
+          <div className="flex items-center gap-2">
+            <div className="w-9 h-9 rounded-full bg-cyan-500 flex items-center justify-center text-white text-sm font-bold">
               ◆
             </div>
-            <span className="text-xl font-bold text-cyan-500">ops</span>
+            <span className="text-2xl font-bold text-cyan-500">ops</span>
           </div>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition text-xl"
+            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+            {darkMode ? "☀️" : "🌙"}
+          </button>
+        </div>
+
+        {/* Desktop Theme Toggle */}
+        <div className="hidden md:flex justify-end mb-8">
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition"
@@ -138,21 +149,11 @@ function Login() {
           </button>
         </div>
 
-        {/* Mobile Logo */}
-        <div className="md:hidden mb-10 flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white text-sm font-bold">
-            ◆
-          </div>
-          <h2 className="text-2xl font-bold tracking-tight text-cyan-500">
-            ops
-          </h2>
-        </div>
-
         {/* Form Centering */}
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-md">
 
-            <div className="bg-white dark:bg-[#1A1A1A] rounded-2xl p-10 shadow-xl border border-gray-200 dark:border-gray-800 space-y-6">
+            <div className="bg-white dark:bg-[#1A1A1A] rounded-2xl p-8 md:p-10 shadow-xl border border-gray-200 dark:border-gray-700 space-y-6">
 
               {/* Title */}
               <div className="text-center space-y-2 mb-6">
