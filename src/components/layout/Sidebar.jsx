@@ -1,10 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import { AuthContext } from "../../context/AuthContext";
 
 function Sidebar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { darkMode } = useContext(ThemeContext);
+  const { logout } = useContext(AuthContext);
 
   const mainNavItems = [
     { name: "Dashboard", path: "/dashboard", icon: "📊" },
@@ -76,7 +79,8 @@ function Sidebar() {
       </nav>
 
       {/* User Profile */}
-      <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-auto">
+      <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-auto space-y-3">
+        {/* User Info */}
         <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer transition">
           <div className="w-10 h-10 rounded-full bg-yellow-500 dark:bg-yellow-500 flex items-center justify-center text-white font-bold">
             A
@@ -86,6 +90,18 @@ function Sidebar() {
             <p className="text-xs text-gray-500 dark:text-gray-500 truncate">Security Lead</p>
           </div>
         </div>
+
+        {/* Logout Button */}
+        <button
+          onClick={() => {
+            logout();
+            navigate("/");
+          }}
+          className="w-full px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700 text-white text-sm font-medium transition-all flex items-center justify-center gap-2"
+        >
+          <span>🚪</span>
+          <span>Logout</span>
+        </button>
       </div>
 
     </div>

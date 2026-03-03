@@ -5,46 +5,49 @@ import ScanDetail from "./pages/ScanDetail";
 import AppLayout from "./components/layout/AppLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
+    <ThemeProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
 
-          {/* Login (No Layout) */}
-          <Route path="/" element={<Login />} />
+            {/* Login (No Layout) */}
+            <Route path="/" element={<Login />} />
 
-          {/* Dashboard Layout */}
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute
-                element={
-                  <AppLayout>
-                    <Dashboard />
-                  </AppLayout>
-                }
-              />
-            }
-          />
+            {/* Dashboard Layout */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute
+                  element={
+                    <AppLayout>
+                      <Dashboard />
+                    </AppLayout>
+                  }
+                />
+              }
+            />
 
-          <Route
-            path="/scan/:id"
-            element={
-              <ProtectedRoute
-                element={
-                  <AppLayout>
-                    <ScanDetail />
-                  </AppLayout>
-                }
-              />
-            }
-          />
+            <Route
+              path="/scan/:id"
+              element={
+                <ProtectedRoute
+                  element={
+                    <AppLayout>
+                      <ScanDetail />
+                    </AppLayout>
+                  }
+                />
+              }
+            />
 
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

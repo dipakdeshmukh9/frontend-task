@@ -82,8 +82,8 @@ function Login() {
         {/* Content */}
         <div className="relative z-10">
 
-          <h2 className="text-2xl font-semibold mb-12 tracking-tight">
-            aps
+          <h2 className="text-3xl font-bold mb-12 tracking-tight text-cyan-400">
+            ◆ ops
           </h2>
 
           <h1 className="text-5xl font-semibold leading-[1.1] mb-8">
@@ -121,20 +121,30 @@ function Login() {
       {/* ================= RIGHT SIDE (FORM SECTION) ================= */}
       <div className="md:w-1/2 bg-gray-50 dark:bg-[#0F0F0F] px-6 py-10 md:px-16 md:py-20 flex flex-col">
 
-        {/* Toggle */}
-        <div className="flex justify-end mb-8">
-          <Button
-            variant="secondary"
+        {/* Theme Toggle */}
+        <div className="flex justify-between items-center mb-8">
+          <div className="md:hidden flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white text-sm font-bold">
+              ◆
+            </div>
+            <span className="text-xl font-bold text-cyan-500">ops</span>
+          </div>
+          <button
             onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition"
+            title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
-            Toggle
-          </Button>
+            {darkMode ? "☀️" : "🌙"}
+          </button>
         </div>
 
         {/* Mobile Logo */}
-        <div className="md:hidden mb-10">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            aps
+        <div className="md:hidden mb-10 flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-white text-sm font-bold">
+            ◆
+          </div>
+          <h2 className="text-2xl font-bold tracking-tight text-cyan-500">
+            ops
           </h2>
         </div>
 
@@ -146,13 +156,13 @@ function Login() {
 
               {/* Title */}
               <div className="text-center space-y-2 mb-6">
-                <h2 className="text-3xl font-semibold">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                   {isLoginMode ? "Log in" : "Sign up"}
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {isLoginMode ? "Don't have an account?" : "Already have an account?"}
-                  <span 
-                    className="text-teal-500 cursor-pointer ml-1 hover:underline"
+                  {isLoginMode ? "Don't have an account? " : "Already have an account? "}
+                  <button
+                    className="text-cyan-600 dark:text-cyan-400 cursor-pointer font-medium hover:underline"
                     onClick={() => {
                       setIsLoginMode(!isLoginMode);
                       setError("");
@@ -163,7 +173,7 @@ function Login() {
                     }}
                   >
                     {isLoginMode ? "Sign up" : "Log in"}
-                  </span>
+                  </button>
                 </p>
               </div>
 
@@ -215,24 +225,23 @@ function Login() {
                 </label>
               )}
 
-              <Button 
-                variant="primary" 
-                className="w-full"
+              <button 
                 onClick={isLoginMode ? handleLogin : handleCreateAccount}
+                className="w-full bg-cyan-600 hover:bg-cyan-700 dark:bg-cyan-600 dark:hover:bg-cyan-700 text-white py-2.5 rounded-xl font-semibold transition"
               >
                 {isLoginMode ? "Log in" : "Create account"}
-              </Button>
+              </button>
 
               {/* Social Buttons */}
               <div className="flex gap-3 pt-4">
-                <button className="flex-1 bg-black text-white py-2 rounded-xl text-sm font-medium hover:bg-gray-900">
-                  Apple
+                <button className="flex-1 bg-black dark:bg-gray-900 text-white py-2.5 rounded-xl text-sm font-medium hover:bg-gray-900 dark:hover:bg-gray-800 transition flex items-center justify-center gap-2">
+                  <span>🍎</span>
                 </button>
-                <button className="flex-1 bg-white border border-gray-300 py-2 rounded-xl text-sm font-medium hover:bg-gray-50">
-                  Google
+                <button className="flex-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white py-2.5 rounded-xl text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition flex items-center justify-center gap-2">
+                  <span>🔍</span>
                 </button>
-                <button className="flex-1 bg-blue-600 text-white py-2 rounded-xl text-sm font-medium hover:bg-blue-700">
-                  Meta
+                <button className="flex-1 bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 text-white py-2.5 rounded-xl text-sm font-medium transition flex items-center justify-center gap-2">
+                  <span>👥</span>
                 </button>
               </div>
 
