@@ -68,7 +68,7 @@ function Dashboard() {
       {/* Search and Filter Toolbar */}
       <div className="px-6">
         <div className="bg-gray-100 dark:bg-[#1A1A1A] rounded-xl p-4 border border-gray-200 dark:border-gray-800 flex justify-between items-center gap-4 flex-wrap">
-          <div className="flex-1 relative min-w-[250px]">
+          <div className="flex-1 relative">
             <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400">🔍</span>
             <input
               type="text"
