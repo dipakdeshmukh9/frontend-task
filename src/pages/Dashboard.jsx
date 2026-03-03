@@ -9,38 +9,26 @@ function Dashboard() {
 
       {/* Header Title and Metadata */}
       <div className="px-4 md:px-6 pt-4 md:pt-6">
-        <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-6 flex flex-wrap items-center gap-2 md:gap-3">
-          <div className="flex items-center gap-2">
-            <span>Org:</span>
-            <span className="text-gray-900 dark:text-white font-semibold">Project X</span>
-          </div>
+        <div className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mb-4 flex flex-wrap items-center gap-1 md:gap-2">
+          <span>Org: <span className="text-gray-900 dark:text-white font-semibold">Project X</span></span>
+          <span>|</span>
+          <span>Owner: <span className="text-gray-900 dark:text-white font-semibold">Nammogirl</span></span>
+          <span>|</span>
+          <span>Total Scans: <span className="text-gray-900 dark:text-white font-semibold">100</span></span>
+          <span>|</span>
+          <span className="hidden sm:inline">Scheduled: <span className="text-gray-900 dark:text-white font-semibold">1000</span></span>
           <span className="hidden sm:inline">|</span>
-          
-          <div className="flex items-center gap-2">
-            <span>Owner:</span>
-            <span className="text-gray-900 dark:text-white font-semibold">Nammogirl</span>
-          </div>
+          <span className="hidden sm:inline">Rescans: <span className="text-gray-900 dark:text-white font-semibold">100</span></span>
           <span className="hidden sm:inline">|</span>
-          
-          <div className="flex items-center gap-2">
-            <span>Total Scans:</span>
-            <span className="text-gray-900 dark:text-white font-semibold">100</span>
-          </div>
-          <span className="hidden lg:inline">|</span>
-          
-          <div className="hidden lg:flex items-center gap-2">
-            <span>Scheduled:</span>
-            <span className="text-gray-900 dark:text-white font-semibold">1000</span>
-          </div>
-          <span className="hidden lg:inline">|</span>
-          
+          <span className="hidden md:inline">Failed Scans: <span className="text-gray-900 dark:text-white font-semibold">100</span></span>
+          <span className="hidden md:inline">|</span>
           <span className="text-cyan-600 dark:text-cyan-500 ml-auto md:ml-0">⏱️ Last 10 mins ago</span>
         </div>
       </div>
 
       {/* Stats Cards */}
       <div className="px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           <StatCard
             title="Critical Severity"
             count="86"

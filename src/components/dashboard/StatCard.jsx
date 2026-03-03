@@ -21,24 +21,24 @@ function StatCard({ title, count, change, color, icon }) {
                   "bg-green-900/40 dark:bg-green-900/50";
 
   return (
-    <div className={`bg-white dark:bg-[#1A1A1A] rounded-lg md:rounded-xl p-4 md:p-6 border border-gray-200 dark:border-gray-800 flex flex-col gap-3 md:gap-4 shadow-sm hover:shadow-md transition-shadow ${bgColor}`}>
+    <div className={`bg-white dark:bg-[#1A1A1A] rounded-lg md:rounded-xl p-3 md:p-4 border border-gray-200 dark:border-gray-800 flex flex-col gap-2 md:gap-3 shadow-sm hover:shadow-md transition-shadow ${bgColor}`}>
 
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300 font-medium">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-xs text-gray-600 dark:text-gray-300 font-medium">
           {title}
         </span>
 
-        <div className={`w-9 h-9 md:w-10 md:h-10 rounded-lg ${badgeBg} flex items-center justify-center text-lg md:text-xl shrink-0`}>
+        <div className={`w-8 h-8 md:w-9 md:h-9 rounded-lg ${badgeBg} flex items-center justify-center text-base md:text-lg shrink-0`}>
           {badgeIcon}
         </div>
       </div>
 
-      <div className="space-y-1.5">
-        <div className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-white leading-none">
+      <div className="space-y-1">
+        <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-none">
           {count}
         </div>
 
-        <div className={`text-xs md:text-sm font-semibold flex items-center gap-1 ${
+        <div className={`text-xs font-semibold flex items-center gap-0.5 ${
           isDecreasing 
             ? "text-green-500 dark:text-green-400" 
             : "text-red-500 dark:text-red-400"
