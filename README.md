@@ -2,6 +2,8 @@
 
 A modern, feature-rich security scanning and vulnerability assessment dashboard built with React, Vite, and Tailwind CSS. Fenrir provides real-time scan monitoring, detailed vulnerability reporting, and comprehensive security analysis with a pixel-perfect user interface.
 
+## Live Link : https://frontend-task-8hd9avnpg-dipak-deshmukhs-projects.vercel.app/
+
 ## 📋 Table of Contents
 
 - [Features](#features)
@@ -58,12 +60,20 @@ A modern, feature-rich security scanning and vulnerability assessment dashboard 
 ## 📸 Screenshots
 
 ### Dashboard View
+<img width="948" height="497" alt="image" src="https://github.com/user-attachments/assets/c72fbdd9-f7e8-42df-b1fe-5ff310f4074c" />
+<img width="945" height="498" alt="image" src="https://github.com/user-attachments/assets/cf0124b0-d7c2-45b9-a83a-d9d9033518a9" />
+
+
 - Main dashboard with severity statistics
 - Scan table with progress indicators
 - Real-time vulnerability badges
 - Search and filter functionality
 
 ### Scan Detail View
+<img width="944" height="497" alt="image" src="https://github.com/user-attachments/assets/ab5c6382-f110-450e-af91-3b162c5c7594" />
+<img width="947" height="496" alt="image" src="https://github.com/user-attachments/assets/03cb3cab-f6b4-4a99-bb8d-ed5ee4fc0313" />
+
+
 - Active stage tracking with visual timeline
 - Circular progress indicator
 - Live scan console with activity logs
@@ -72,6 +82,10 @@ A modern, feature-rich security scanning and vulnerability assessment dashboard 
 - Status summary bar
 
 ### Theme Support
+<img width="943" height="498" alt="image" src="https://github.com/user-attachments/assets/facb8872-cfbd-4961-a9cf-aab3c138c67a" />
+<img width="946" height="501" alt="image" src="https://github.com/user-attachments/assets/4bd7ec86-8496-49d4-8337-5f8859718ae0" />
+
+
 - Light mode for bright environments
 - Dark mode for reduced eye strain
 - Seamless theme switching
