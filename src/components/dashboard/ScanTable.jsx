@@ -1,6 +1,6 @@
 import TableRow from "./TableRow";
 
-function ScanTable({ scans }) {
+function ScanTable({ scans, onDelete }) {
   return (
     <div className="bg-white dark:bg-[#1A1A1A] rounded-lg md:rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden shadow-sm">
 
@@ -14,12 +14,13 @@ function ScanTable({ scans }) {
             <th className="text-left px-3 md:px-5 lg:px-6 py-2.5 md:py-3.5 text-gray-600 dark:text-gray-300 font-semibold text-xs md:text-sm whitespace-nowrap">Progress</th>
             <th className="hidden md:table-cell text-left px-3 md:px-5 lg:px-6 py-2.5 md:py-3.5 text-gray-600 dark:text-gray-300 font-semibold text-xs md:text-sm whitespace-nowrap">Vulnerability</th>
             <th className="hidden sm:table-cell text-left px-3 md:px-5 lg:px-6 py-2.5 md:py-3.5 text-gray-600 dark:text-gray-300 font-semibold text-xs md:text-sm whitespace-nowrap">Last Scan</th>
+            <th className="text-right px-3 md:px-5 lg:px-6 py-2.5 md:py-3.5 text-gray-600 dark:text-gray-300 font-semibold text-xs md:text-sm whitespace-nowrap">Actions</th>
           </tr>
         </thead>
 
         <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
           {scans.map((scan) => (
-            <TableRow key={scan.id} scan={scan} />
+            <TableRow key={scan.id} scan={scan} onDelete={onDelete} />
           ))}
         </tbody>
 
